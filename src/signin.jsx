@@ -3,7 +3,7 @@ import { Formik, Field, ErrorMessage } from 'formik'
 import emailValidator from 'email-validator'
 import { FirebaseSignIn } from './firebaseAuth'
 
-export default function SignIn({isError, isUser}) {
+export default function SignIn({isError}) {
   const [hasError, setHasError] = useState(false)
 
   return (
@@ -33,7 +33,7 @@ export default function SignIn({isError, isUser}) {
           setHasError(false)
           try {
             //await firebase.auth().signInWithEmailAndPassword(email, password)
-            FirebaseSignIn(isError, isUser, email, password)
+            FirebaseSignIn(isError, email, password)
             setSubmitting(false)
 
             if (location.state) {
@@ -43,7 +43,7 @@ export default function SignIn({isError, isUser}) {
               }
             }
           } catch (err) {
-            console.error(err)
+            console.error(err.message)
             setHasError(true)
             setSubmitting(false)
           }

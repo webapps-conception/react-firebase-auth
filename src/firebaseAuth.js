@@ -28,13 +28,11 @@ export function FirebaseCheck(isUser) {
 }
 
 // https://firebase.google.com/docs/auth/web/password-auth
-export function FirebaseSignIn(isError, isUser, email, password) {
+export function FirebaseSignIn(isError, email, password) {
   const auth = getAuth()
   signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    const user = userCredential.email;
-    console.log("Utilisateur connecté: ", user)
-    isUser(user)
+  .then(() => {
+    console.log("Utilisateur connecté: ", email)
     isError(null)
   })
   .catch((error) => {
@@ -43,11 +41,10 @@ export function FirebaseSignIn(isError, isUser, email, password) {
 }
 
 // https://firebase.google.com/docs/auth/web/password-auth
-export function FirebaseSignOut(isError, isUser, stateUser) {
+export function FirebaseSignOut(isError) {
   const auth = getAuth();
   signOut(auth).then(() => {
-    console.log("Déconnexion de l'utilisateur réussie: ", stateUser)
-    isUser(null)
+    console.log("Déconnexion de l'utilisateur réussie")
     isError(null)
   }).catch((error) => {
     isError("Erreur de déconnexion: " + error.message)

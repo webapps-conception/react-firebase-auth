@@ -43,13 +43,13 @@ function App() {
       )
     } else {
       return (
-        <SignIn isError={isError} isUser={isUser} />
+        <SignIn isError={isError} />
       )
     }
   }
 
   function handleClickSignOut() {
-    FirebaseSignOut(isError, isUser, stateUser)
+    FirebaseSignOut(isError)
   }
 
   return (
