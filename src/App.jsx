@@ -54,7 +54,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello Firebase Basic Authentificate</h1>
+      <h1>Firebase Basic Authentificate</h1>
       <Status />
       <Error />
       <Buttons />
